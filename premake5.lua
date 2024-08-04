@@ -16,6 +16,8 @@ CreateWorkspace({name = "static_props_interface", abi_compatible = false, path =
 		IncludeSDKTier0()
 		IncludeSDKTier1()
 
+		links { "dl" }
+
 		filter("system:windows")
 			files({"source/win32/*.cpp", "source/win32/*.hpp"})
 
