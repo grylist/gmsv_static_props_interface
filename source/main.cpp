@@ -3,6 +3,7 @@
 #include "engine/ivmodelinfo.h"
 #include "engine/ICollideable.h"
 #include "main.hpp"
+#include <cstdint>
 
 using namespace GarrysMod::Lua;
 
@@ -11,12 +12,7 @@ IVModelInfo *modelinfo = nullptr;
 
 LUA_FUNCTION_STATIC( GetStaticPropModelNameByIndex )
 {
-	double number = LUA->CheckNumber( 1 );
-	if(number < 0 || number > 4294967295)
-		LUA->ThrowError("[gmsv_static_props_interface] You cant use negative or very big numbers!");
-
-
-	size_t index = static_cast<size_t>( number );
+ 	uint16_t index = LUA->CheckNumber( 1 );
 
 	ICollideable *pCollide = staticpropmgr->GetStaticPropByIndex( index );
 	if(pCollide == nullptr){
